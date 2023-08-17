@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import {Link, useNavigate, useParams} from 'react-router-dom'
-import EmployeeService from '../services/EmployeeService'
+import {Link, useHistory, useParams} from 'react-router-dom'
+import EmployeeService from '../../api/EmployeeService'
 
 const AddEmployee = () => {
 
@@ -8,7 +8,7 @@ const AddEmployee = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [emailId, setEmailId] = useState('')
-    const navigate = useNavigate()
+    const navigate = useHistory()
     const {id} = useParams();
 
     const saveOrUpdateEmployee = (e) => {
@@ -18,7 +18,7 @@ const AddEmployee = () => {
 
         if(id){
                 EmployeeService.updateEmployee(id, employee).then((response) => {
-                    navigate('/employees')
+                    navigate.push('/employees')
                 }).catch(error => {
                     console.log(error);
                 })
@@ -26,7 +26,7 @@ const AddEmployee = () => {
 
         EmployeeService.createEmployee(employee).then((response) =>{
             console.log(response.data);
-            navigate('/employees')
+            navigate.push('/employees')
 
         }).catch(error => {
             console.log(error);

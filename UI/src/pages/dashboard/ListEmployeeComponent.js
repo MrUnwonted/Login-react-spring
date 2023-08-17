@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import EmployeeService from '../services/EmployeeService'
+import EmployeeService from '../../api/EmployeeService'
 
 const ListEmployeeComponent = () => {
 
@@ -46,7 +46,7 @@ const ListEmployeeComponent = () => {
                 </thead>
                 <tbody>
                     {
-                        employees.map(
+                      employees.length ?  employees.map(
                             employee =>
                             <tr key = {employee.id}> 
                                 <td> {employee.id} </td>
@@ -60,7 +60,7 @@ const ListEmployeeComponent = () => {
                                 </td>
                             </tr>
                         )
-                    }
+                   :<h1> no user available!!</h1>}
                 </tbody>
             </table>
         </div>

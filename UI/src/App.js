@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import  LoginPage from './pages/LoginPage';
 import { Dashboard } from './pages/dashboard/dashboard';
+import AddEmployee from './pages/dashboard/AddEmployee';
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={LoginPage}/>
           <Route exact path="/dashboard" component={Dashboard}/>
-        </Switch>
+          <Route  path = "/add-employee" element = {<AddEmployee/> } />
+          </Switch>
       </BrowserRouter>
   );
 }

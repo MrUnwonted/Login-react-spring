@@ -3,6 +3,7 @@ import { Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import {fetchUserData} from '../../api/authenticationService';
+import ListEmployeeComponent from './ListEmployeeComponent';
 
 
 const MainWrapper=styled.div`
@@ -38,7 +39,7 @@ export const Dashboard=(props)=>{
                 <br></br>
                 {data && data.roles && data.roles.filter(value => value.roleCode==='ADMIN').length>0 && <Button type="variant">Add User</Button> }
                 <br></br>
-
+                <ListEmployeeComponent />
                 <Button style={{marginTop:'5px'}} onClick={() =>logOut()}>Logout</Button>
             </MainWrapper>
         </Container>
