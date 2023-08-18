@@ -7,16 +7,16 @@ const initialState={
 };
 
 
-
 const auth=(state=initialState,action)=>{
     console.log("Reducer auth");
     switch(action.type){
         case AUTH_REQ:
             return {...state,error:'',loading:true};
-        
-        case AUTH_SUCCESS:
-            const data=action.payload;
-            return {...state,error:'',loading:false,user:data};
+            
+            case AUTH_SUCCESS:
+                const data=action.payload;
+                return {...state,error:'',loading:false,user:data};
+                
 
         case AUTH_FAILURE:
             const error=action.payload;
