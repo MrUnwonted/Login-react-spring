@@ -8,49 +8,49 @@ const AddEmployee = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [emailId, setEmailId] = useState('')
-    // const navigate = useHistory()
-    // const {id} = useParams();
+    const navigate = useHistory()
+    const {id} = useParams();
 
-    // const saveOrUpdateEmployee = (e) => {
-    //     e.preventDefault();
+    const saveOrUpdateEmployee = (e) => {
+        e.preventDefault();
 
-    //     const employee = {firstName, lastName, emailId}
+        const employee = {firstName, lastName, emailId}
 
-    //     if(id){
-    //             EmployeeService.updateEmployee(id, employee).then((response) => {
-    //                 navigate.push('/employees')
-    //             }).catch(error => {
-    //                 console.log(error);
-    //             })
-    //     }else{
+        if(id){
+                EmployeeService.updateEmployee(id, employee).then((response) => {
+                    navigate.push('/dashboard')
+                }).catch(error => {
+                    console.log(error);
+                })
+        }else{
 
-    //     EmployeeService.createEmployee(employee).then((response) =>{
-    //         console.log(response.data);
-    //         navigate.push('/employees')
+        EmployeeService.createEmployee(employee).then((response) =>{
+            console.log(response.data);
+            navigate.push('/dashboard')
 
-    //     }).catch(error => {
-    //         console.log(error);
-    //     })
-    // }}
+        }).catch(error => {
+            console.log(error);
+        })
+    }}
 
-    //  useEffect(() => {
+     useEffect(() => {
 
-    //     EmployeeService.getEmployeeById(id).then((response) =>{
-    //         setFirstName(response.data.firstName)
-    //         setLastName(response.data.lastName)
-    //         setEmailId(response.data.emailId)
-    //     }).catch(error => {
-    //         console.log(error)
-    //     })
-    // }, [])
+        EmployeeService.getEmployeeById(id).then((response) =>{
+            setFirstName(response.data.firstName)
+            setLastName(response.data.lastName)
+            setEmailId(response.data.emailId)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [])
     
-//    const title = () => {
-//         if(id){
-//             return <h2 className='text-center'>Update Employee</h2>
-//         } else {
-//             return <h2 className='text-center'>Add Employee</h2>
-//         }
-//     }
+   const title = () => {
+        if(id){
+            return <h2 className='text-center'>Update Employee</h2>
+        } else {
+            return <h2 className='text-center'>Add Employee</h2>
+        }
+    }
 
   return (
     <div>
@@ -60,7 +60,7 @@ const AddEmployee = () => {
              <div className = "card col-md-6 offset-md-3 offset-md-3">
                  <div className = "card-body">
                     {
-                        // title()
+                        title()
                     }
                     <div className='card-body'></div>
                      <form>
@@ -103,7 +103,7 @@ const AddEmployee = () => {
                              </input>
                          </div>
 
-                         {/* <button className = "btn btn-success" onClick = {(e) => saveOrUpdateEmployee(e)} >Submit </button> */}
+                         <button className = "btn btn-success" onClick = {(e) => saveOrUpdateEmployee(e)} >Submit </button>
                          <Link to="/employees" className='btn btn-danger'
                          style = {{marginLeft:"10px"}} >Cancel</Link>
                      </form>

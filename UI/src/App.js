@@ -20,11 +20,11 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LoginPage}/>
-            <>
+            
             <Route exact path="/dashboard" component={Dashboard}/>
-            <Route  path = "/add-employee" component = {<AddEmployee/> } />
-           <Route  path = "/edit-employee/:id" component = {<AddEmployee/> } /> 
-           </>
+            <Route  path = "/add-employee" component = {AddEmployee } />
+           <Route  path = "/edit-employee/:id" component = {AddEmployee } /> 
+           
           </Switch>
       </BrowserRouter>
   );
